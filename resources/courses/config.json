@@ -1,0 +1,125 @@
+{
+	"type": "Collection",
+	"properties": {
+		"term": {
+			"name": "term",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "term",
+			"order": 0
+		},
+		"department": {
+			"name": "department",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "department",
+			"order": 1
+		},
+		"name": {
+			"name": "name",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "name",
+			"order": 2
+		},
+		"code": {
+			"name": "code",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "code",
+			"order": 3
+		},
+		"section": {
+			"name": "section",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "section",
+			"order": 4
+		},
+		"title": {
+			"name": "title",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "title",
+			"order": 5
+		},
+		"credits": {
+			"name": "credits",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "credits",
+			"order": 6
+		},
+		"ects": {
+			"name": "ects",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "ects",
+			"order": 7
+		},
+		"quota": {
+			"name": "quota",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "quota",
+			"order": 8
+		},
+		"instructor": {
+			"name": "instructor",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "instructor",
+			"order": 9
+		},
+		"classes": {
+			"name": "classes",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "classes",
+			"order": 10
+		},
+		"reqForDepartment": {
+			"name": "reqForDepartment",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "reqForDepartment",
+			"order": 11
+		},
+		"forDepartments": {
+			"name": "forDepartments",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "forDepartments",
+			"order": 12
+		},
+		"isLab": {
+			"name": "isLab",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "isLab",
+			"order": 13
+		},
+		"isPS": {
+			"name": "isPS",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "isPS",
+			"order": 14
+		}
+	}
+}
