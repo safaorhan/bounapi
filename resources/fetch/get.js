@@ -1,23 +1,19 @@
+cancelUnless(parts.length==3, "Bad request", 400);
+
+var _term = decodeURIComponent(parts[0]);
+var _department = parts[1];
+var _url = decodeURIComponent(parts[2]);
+
+console.log("Fetching link: " + _url);
+
+
 var requestify = require('requestify');
 var cheerio = require('cheerio');
 
-var _term = "2016/2017-1";
-var _department = "CMPE";
-
-requestify.get('http://registration.boun.edu.tr/scripts/sch.asp?donem=2016/2017-1&kisaadi=CMPE&bolum=COMPUTER+ENGINEERING')
+requestify.get('http://registration.boun.edu.tr' + _url)
     .then(function(htmlResponse) {
+        //console.log(htmlResponse.body);
         parseHtml(htmlResponse.body);
-        var obj = {
-            content: htmlResponse.body
-        };
-        dpd.responses.post(obj, function(response, error) {
-            if (error) {
-                console.log("error");
-                cancel(error, 512);
-            } else {
-                setResult("OK!");
-            }
-        });
     });
 
 function parseHtml(source) {
@@ -80,6 +76,7 @@ function parseHtml(source) {
             }
         }
 
+        console.log("Fetching course: " + course);
         dpd.courses.post(course, function(result, error) {
             if(error) {
                 cancel(error, 566);
