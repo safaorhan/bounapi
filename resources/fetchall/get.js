@@ -25,16 +25,18 @@ function parseHtml(body) {
         
         var department = {code: code, name: name};
         
-        console.log(encodeURIComponent(_term) + "/" + code + "/" + encodeURIComponent(link));
-        
-        dpd.fetch.get(encodeURIComponent(_term) + "/" + code + "/" + encodeURIComponent(link), function(result, error){
+        dpd.fetch.get(encodeURIComponent(_term) + "/" + code + "/" + encodeURIComponent(link), {$limitRecursion: 10000}, function(result, error){
             if(error) {
+                console.log(error);
                 cancel(error, 576);
+            } else {
+                
             }
         });
         
         dpd.departments.post(department, function(result, error){
             if(error) {
+                console.log(error);
                 cancel(error, 577);
             }
         });

@@ -10,16 +10,21 @@ console.log("Fetching link: " + _url);
 var requestify = require('requestify');
 var cheerio = require('cheerio');
 
+console.log("Fetching department: " + _department);
+
 requestify.get('http://registration.boun.edu.tr' + _url)
     .then(function(htmlResponse) {
         //console.log(htmlResponse.body);
+        console.log("Fetched department: " + _department);
         parseHtml(htmlResponse.body);
     });
 
 function parseHtml(source) {
     var $ = cheerio.load(source);
-    var lastCourse;
+    var lastCourse = {};
+    
     $('table[border="1"] tr:not(.schtitle)').each(function(i, tr) {
+        
         var row = [];
 
         $(this).find('td').each(function(j, td) {
@@ -29,6 +34,7 @@ function parseHtml(source) {
         var course = {};
         course.term = _term;
         course.department = _department;
+        
 
         if (!(/\S/.test(row[0]))) { //This row is P.S. or LAB
             course = JSON.parse(JSON.stringify(lastCourse));
@@ -76,12 +82,14 @@ function parseHtml(source) {
             }
         }
 
-        console.log("Fetching course: " + course);
+        console.log("Storing course: " + course.name + course.code + "." + course.section);
+        
         dpd.courses.post(course, function(result, error) {
             if(error) {
+                console.log(error);
                 cancel(error, 566);
             } else {
-                setResult("OK");
+                //console.log("OK");
             }
         });
     });
