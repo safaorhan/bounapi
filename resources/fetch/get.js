@@ -9,14 +9,15 @@ console.log("Fetching link: " + _url);
 
 var requestify = require('requestify');
 var cheerio = require('cheerio');
+var iconv = require('iconv-lite');
 
 console.log("Fetching department: " + _department);
 
-requestify.get('http://registration.boun.edu.tr' + _url)
+requestify.responseEncoding('binary').get('http://registration.boun.edu.tr' + _url)
     .then(function(htmlResponse) {
-        //console.log(htmlResponse.body);
+        var body = iconv.decode(htmlResponse.body, 'ISO-8859-9');
         console.log("Fetched department: " + _department);
-        parseHtml(htmlResponse.body);
+        parseHtml(body);
     });
 
 function parseHtml(source) {
@@ -64,6 +65,7 @@ function parseHtml(source) {
         }
         
         course.instructor = row[6];
+        console.log(course.instructor);
 
         course.forDepartments = row[13].slice(0, -1).split(";");
         if (course.forDepartments[0] === "") {
@@ -73,7 +75,14 @@ function parseHtml(source) {
         course.classes = [];
         
         if(row[7] != "TBA") {
-            var days = row[7].split("");
+            var days = [];
+            var matches = [];
+            var regex = /[MTWF]h?/g;
+            
+            while(matches=regex.exec(row[7])) {
+                days.push(matches[0]);
+            }
+                        
             var hours = row[8].split("");
             var places = row[9].split(" | ");
 

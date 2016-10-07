@@ -3,17 +3,16 @@ cancelUnless(parts.length == 1, "Bad request", 400);
 var _term = decodeURIComponent(parts[0]);
 
 var requestify = require('requestify');
+var iconv = require('iconv-lite');
 
-
-requestify.post("http://registration.boun.edu.tr/scripts/schdepsel.asp", {
+requestify.responseEncoding('binary').post("http://registration.boun.edu.tr/scripts/schdepsel.asp", {
     semester: _term
 }, {
     dataType: "form-url-encoded"
 }).then(function(response) {
-    parseHtml(response.body);
+    var body = iconv.decode(response.body, 'ISO-8859-9');
+    parseHtml(body);
 });
-
-console.log("Hey");
 
 function parseHtml(body) {
     var matches;

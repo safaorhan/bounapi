@@ -27,8 +27,8 @@
 		},
 		"code": {
 			"name": "code",
-			"type": "number",
-			"typeLabel": "number",
+			"type": "string",
+			"typeLabel": "string",
 			"required": false,
 			"id": "code",
 			"order": 3
