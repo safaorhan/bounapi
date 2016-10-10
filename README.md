@@ -29,7 +29,7 @@ Maximum number of elements you can get from a collection query is set to 100 in 
 In this query you limit the element count to 12 and skip the first 24. So you can get the 3rd batch.
 
 
-** If you want additional information about querying the collections check [Deployd's official documentation](http://docs.deployd.com/docs/collections/reference/querying-collections.html).**
+**If you want additional information about querying the collections check [Deployd's official documentation](http://docs.deployd.com/docs/collections/reference/querying-collections.html).**
 
 ### Collections in bounapi
 
