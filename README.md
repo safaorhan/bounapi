@@ -25,7 +25,7 @@ When querying collection resources, you can use deployd's (hence also mongo's) q
 Maximum number of elements you can get from a collection query is set to 100 in a time. It's highly recommended to paginate your queries using $limit and $skip operators.
 
 **Example:**
-* Get the CMPE courses a dozen at a time: `/courses?name=CMPE&$limit=12$skip=24`
+* Get the CMPE courses a dozen at a time: `/courses?name=CMPE&$limit=12&$skip=24`
 In this query you limit the element count to 12 and skip the first 24. So you can get the 3rd batch.
 
 
